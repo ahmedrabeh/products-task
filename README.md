@@ -73,3 +73,10 @@ ng serve
 - Open [http://localhost:4200](http://localhost:4200) in your browser.
 
 
+## 🔐 Test Credentials
+
+Use the following credentials to log in as a test user:
+
+**Username:** `admin@gmail.com`  
+**Password:** `admin123`
+
