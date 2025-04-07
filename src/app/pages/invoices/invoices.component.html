@@ -1,0 +1,52 @@
+<div class="min-h-screen p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Invoices</h2>
+
+ <!-- Create Invoice Button -->
+ <button (click)="openModal()" class="px-6 py-3 bg-blue-500 text-white rounded-lg">Create Invoice</button>
+
+ <!-- Invoice List -->
+ <div class="mt-6">
+   <table class="w-full border-collapse border border-gray-200">
+     <thead>
+       <tr class="bg-gray-100">
+         <th class="border p-2">Invoice #</th>
+         <th class="border p-2">Total Amount</th>
+         <th class="border p-2">Date</th>
+         <th class="border p-2">Actions</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let invoice of invoices" class="text-center">
+         <td class="border p-2">{{ invoice.number }}</td>
+         <td class="border p-2">${{ invoice.total }}</td>
+         <td class="border p-2">{{ invoice.date }}</td>
+         <td class="border p-2">
+           <button (click)="openModal(invoice)" class="bg-yellow-500 text-white px-3 py-1 rounded-lg mr-2">Edit</button>
+           <button (click)="deleteInvoice(invoice.id)" class="bg-red-500 text-white px-3 py-1 rounded-lg">Delete</button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+ </div>
+
+ <!-- Create/Edit Invoice Modal -->
+ <div *ngIf="showModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+   <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+     <h3 class="text-lg font-bold">{{ editMode ? 'Edit Invoice' : 'Create Invoice' }}</h3>
+
+     <label class="block mt-4">Invoice Number</label>
+     <input type="text" [(ngModel)]="selectedInvoice.number" class="w-full p-2 border rounded">
+
+     <label class="block mt-4">Total Amount</label>
+     <input type="number" [(ngModel)]="selectedInvoice.total" class="w-full p-2 border rounded">
+
+     <label class="block mt-4">Date</label>
+     <input type="date" [(ngModel)]="selectedInvoice.date" class="w-full p-2 border rounded">
+
+     <div class="mt-4 flex justify-end space-x-2">
+       <button (click)="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded-lg">Cancel</button>
+       <button (click)="saveInvoice()" class="px-4 py-2 bg-blue-500 text-white rounded-lg">{{ editMode ? 'Update' : 'Save' }}</button>
+     </div>
+   </div>
+ </div>
+</div>

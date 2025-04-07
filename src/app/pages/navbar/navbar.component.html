@@ -1,0 +1,11 @@
+  <!-- Navbar -->
+  <nav class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-lg">
+    <div class="flex gap-4">
+      <a routerLink="/home" class="hover:underline">Home</a>
+      <a routerLink="/products" class="hover:underline">Products</a>
+      <a routerLink="/invoice" class="hover:underline">Invoices</a>
+    </div>
+    <button (click)="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow-md">
+      Logout
+    </button>
+  </nav>
